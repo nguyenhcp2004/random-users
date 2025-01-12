@@ -1,0 +1,283 @@
+.filterSection {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.filterLabel {
+  color: #333;
+  font-weight: 500;
+}
+
+.filterTag {
+  padding: 6px 16px;
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+  color: #fff;
+  border-radius: 20px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.genderToggle {
+  display: flex;
+  margin-left: auto;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 4px;
+  border-radius: 24px;
+  gap: 4px;
+}
+
+.toggleButton {
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.toggleButton:hover {
+  color: #ff6b6b;
+}
+
+.toggleButton.active {
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.cardHeader {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 16px 16px 0 0;
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff7a7e, #f8b0c4, #ffccd2, #fca69f);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  border: 4px solid #fff;
+  margin-top: 32px;
+}
+
+.card:hover .avatar {
+  transform: scale(1.1);
+}
+
+.info {
+  text-align: left;
+  margin-top: 16px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.email {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.detailItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.badgeSecondary {
+  background: rgba(255, 154, 158, 0.2);
+  color: #ff6b6b;
+}
+
+.badgeOutline {
+  border: 1px solid #ff9a9e;
+  color: #ff6b6b;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.pageButton {
+  text-decoration: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pageButton:hover {
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+  color: #fff;
+}
+
+.pageButton.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pageButton.active {
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+  color: #fff;
+  border: none;
+}
+
+@media (max-width: 1024px) {
+  .cardGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .filterSection {
+    flex-wrap: wrap;
+    padding: 12px 16px;
+  }
+  .genderToggle {
+    margin-left: 0;
+    margin-top: 12px;
+    width: 100%;
+    justify-content: center;
+  }
+  .cardGrid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    padding: 16px;
+  }
+  .avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 28px;
+  }
+  .name {
+    font-size: 16px;
+  }
+  .email {
+    font-size: 12px;
+  }
+}
+
+.ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-weight: bold;
+  color: #333;
+}
+
+.pageButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pageButton:disabled:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+}
+
+@media (max-width: 480px) {
+  .filterSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .filterTag {
+    width: 100%;
+    justify-content: center;
+  }
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+  .pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
