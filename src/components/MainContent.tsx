@@ -1,21 +1,28 @@
-import { useGetUser } from '~/queries/useUser'
+// import { useGetUser } from '~/queries/useUser'
 import styles from '../styles/MainContent.module.css'
 import { Filter, MapPin, Phone } from 'lucide-react'
 import { useCallback, useEffect } from 'react'
 import useQueryConfig from '~/hooks/useQueryConfig'
 import { createSearchParams, Link } from 'react-router-dom'
+import { useGetUsersQuery } from '~/queries/user.service'
 
 export default function MainContent() {
   const queryConfig = useQueryConfig()
   const currentPage = Number(queryConfig.page)
   const totalPages = 10
-  const { data, isLoading } = useGetUser({
+  // const { data, isLoading } = useGetUser({
+  //   ...queryConfig,
+  //   page: Number(queryConfig.page),
+  //   results: Number(queryConfig.results)
+  // })
+
+  const { data, isLoading } = useGetUsersQuery({
     ...queryConfig,
     page: Number(queryConfig.page),
     results: Number(queryConfig.results)
   })
 
-  const users = data?.data.results || []
+  const users = data?.results || []
 
   const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
