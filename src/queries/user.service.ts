@@ -1,11 +1,11 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi } from '@reduxjs/toolkit/query/react'
 import queryString from 'query-string'
-import config from '~/constants/config'
 import { GetUserQuerySchemaType, GetUserResSchemaType } from '~/schemaValidation/user.schema'
+import { axiosBaseQuery } from '~/utils/http'
 
 export const userApi = createApi({
   reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery({ baseUrl: config.baseUrl }),
+  baseQuery: axiosBaseQuery(),
   endpoints: (builder) => ({
     getUsers: builder.query<GetUserResSchemaType, GetUserQuerySchemaType>({
       query: (query) => {

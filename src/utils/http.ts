@@ -1,3 +1,4 @@
+import { BaseQueryFn } from '@reduxjs/toolkit/query'
 import axios, { AxiosError, AxiosInstance } from 'axios'
 import config from '~/constants/config'
 
@@ -36,3 +37,34 @@ export class Http {
 const http = new Http().instance
 
 export default http
+
+export const axiosBaseQuery =
+  (): BaseQueryFn<
+    {
+      url: string
+      method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
+      data?: unknown
+      params?: unknown
+    },
+    unknown,
+    unknown
+  > =>
+  async ({ url, method = 'GET', data, params }) => {
+    try {
+      const result = await http({
+        url,
+        method,
+        data,
+        params
+      })
+      return { data: result.data }
+    } catch (error) {
+      const axiosError = error as AxiosError
+      return {
+        error: {
+          status: axiosError.response?.status,
+          data: axiosError.response?.data || axiosError.message
+        }
+      }
+    }
+  }
